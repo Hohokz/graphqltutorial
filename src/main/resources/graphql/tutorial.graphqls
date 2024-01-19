@@ -8,6 +8,7 @@ type Tutorial {
 extend type Query {
     findAllTutorials: [Tutorial]!
     findTutorialById(id: ID!): Tutorial
+    findLastTutorial(last:Int): [Tutorial]!
     countTutorials: Long!
 }
 

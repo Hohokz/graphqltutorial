@@ -5,6 +5,8 @@ import com.example.graphqltutorial.model.Tutorial;
 import com.example.graphqltutorial.repository.AuthorRepository;
 import com.example.graphqltutorial.repository.TutorialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
@@ -32,6 +34,11 @@ public class Query implements GraphQLQueryResolver {
 
     public Iterable<Tutorial> findAllTutorials() {
         return tutorialRepository.findAll();
+    }
+
+    public Iterable<Tutorial> findLastTutorial(Integer last){
+        PageRequest pageRequest = PageRequest.ofSize(last);
+        return  tutorialRepository.findAll(pageRequest);
     }
 
     public Author findAuthorById(Long id) {
