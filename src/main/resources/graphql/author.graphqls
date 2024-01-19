@@ -1,0 +1,23 @@
+scalar Long
+
+
+type Author {
+    id: ID!
+    name: String!
+    age: Int
+}
+
+# Root
+type Query {
+    findAllAuthors: [Author]!
+    findAuthorById(id: ID!): Author
+    countAuthors: Long!
+
+}
+
+# Root
+type Mutation {
+    createAuthor(name: String!, age: Int): Author!
+    updateAuthor(id: ID!, name: String, age: Int): Author!
+    deleteAuthor(id: ID!): Boolean
+}
